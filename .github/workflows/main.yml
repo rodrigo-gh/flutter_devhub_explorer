@@ -1,35 +1,40 @@
 name: Flutter CI
 
 on:
-    push:
-        branches: ["main"]
-    pull_request:
-        branches: ["main"]
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        defaults:
-            run:
-                working-directory: ./flutter_devhub_explorer
 
-        steps:
-            - uses: actions/setup-java@v3
-              with:
-                  distribution: "zulu"
-                  java-version: "12.x"
+    steps:
+      # Baixar o código
+      - uses: actions/checkout@v3
 
-            - uses: subosito/flutter-action@v2
-              with:
-                  flutter-version: "3.x"
-                  channel: "stable"
+      # Configurar Java
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: "12.x"
 
-            - name: Install dependencies
-              run: flutter pub get
+      #Configurar Flutter
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.x"
+          channel: "stable"
 
-            - name: analyze code
-              run: flutter analyze
+      #Baixar dependências
+      - name: Install dependencies
+        run: flutter pub get
 
-            - name: Run tests
-              run: flutter test
+      #Analisar código
+      - name: Analyze code
+        run: flutter analyze
+
+      #Rodar testes
+      - name: Run tests
+        run: flutter test
