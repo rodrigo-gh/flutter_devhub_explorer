@@ -2,16 +2,11 @@ import 'package:dev_hub_explorer/features/search_repos/domain/entities/github_re
 
 class GitHubRepoModel extends GithubRepo {
   const GitHubRepoModel({
-    required String name,
-    required String description,
-    required String ownerAvatar,
-    required int stars,
-  }) : super(
-         name: name,
-         description: description,
-         ownerAvatar: ownerAvatar,
-         stars: stars,
-       );
+    required super.name,
+    required super.description,
+    required super.ownerAvatar,
+    required super.stars,
+  });
 
   factory GitHubRepoModel.fromJson(Map<String, dynamic> json) {
     return GitHubRepoModel(
