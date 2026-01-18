@@ -1,3 +1,4 @@
+import 'package:dev_hub_explorer/features/search_repos/presentation/pages/search_page.dart';
 import 'package:flutter/material.dart';
 import 'injection_container.dart' as di;
 
@@ -14,12 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'DevHub Explorer',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Scaffold(
-        body: Center(child: Text('Configuração pronta'),),
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const SearchPage(),
     );
   }
 }
