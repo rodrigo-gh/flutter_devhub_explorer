@@ -10,16 +10,20 @@ jobs:
     build:
         runs-on: ubuntu-latest
 
+        defaults:
+            run:
+                working-directory: ./flutter_devhub_explorer
+
         steps:
             - uses: actions/setup-java@v3
               with:
                   distribution: "zulu"
                   java-version: "12.x"
-        
+
             - uses: subosito/flutter-action@v2
               with:
-                flutter-version: '3.x'
-                channel: 'stable'
+                  flutter-version: "3.x"
+                  channel: "stable"
 
             - name: Install dependencies
               run: flutter pub get
